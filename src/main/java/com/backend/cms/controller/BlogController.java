@@ -1,5 +1,7 @@
 package com.backend.cms.controller;
 
+import com.backend.cms.dto.requestDto.BlogRequestDto;
+import com.backend.cms.dto.responseDto.BlogResponseDto;
 import com.backend.cms.model.Blog;
 import com.backend.cms.service.BlogService;
 import lombok.AllArgsConstructor;
@@ -16,12 +18,12 @@ public class BlogController {
     private final BlogService blogService;
 
     @PostMapping
-    public Blog createBlog(@RequestBody Blog blog) {
-        return blogService.createBlog(blog);
+    public BlogResponseDto createBlog(@RequestBody BlogRequestDto request) {
+        return blogService.createBlog(request);
     }
 
     @GetMapping
-    public List<Blog> getAllBlogs() {
+    public List<BlogResponseDto> getAllBlogs() {
         return blogService.getAllBlogs();
     }
 }
