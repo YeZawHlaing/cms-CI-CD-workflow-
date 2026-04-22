@@ -2,9 +2,7 @@ package com.backend.cms.controller;
 
 import com.backend.cms.dto.requestDto.BlogRequestDto;
 import com.backend.cms.dto.responseDto.BlogResponseDto;
-import com.backend.cms.model.Blog;
 import com.backend.cms.service.BlogService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
