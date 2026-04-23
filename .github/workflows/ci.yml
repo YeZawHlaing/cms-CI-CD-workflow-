@@ -21,14 +21,14 @@ jobs:
   build:
     name: Build & Test
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     services:
       postgres:
-        image: postgres:17
+        image: postgres:15
         env:
           POSTGRES_DB: cms
-          POSTGRES_USER: yzh
+          POSTGRES_USER: test
           POSTGRES_PASSWORD: test
         ports:
           - 5432:5432
