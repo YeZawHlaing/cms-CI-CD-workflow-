@@ -1,5 +1,6 @@
 package com.backend.cms.controller;
 
+import com.backend.cms.apiResponse.InfiniteScrollResponse;
 import com.backend.cms.dto.requestDto.BlogRequestDto;
 import com.backend.cms.dto.responseDto.BlogResponseDto;
 import com.backend.cms.service.BlogService;
@@ -20,8 +21,16 @@ public class BlogController {
         return blogService.createBlog(request);
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public List<BlogResponseDto> getAllBlogs() {
         return blogService.getAllBlogs();
+    }
+
+    @GetMapping
+    public InfiniteScrollResponse<BlogResponseDto> getBlogs(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size
+    ) {
+        return blogService.getPaginatedBlogs(page, size);
     }
 }
