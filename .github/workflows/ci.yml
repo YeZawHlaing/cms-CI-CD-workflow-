@@ -62,13 +62,22 @@ jobs:
       - name: Make mvnw executable
         run: chmod +x mvnw
 
-      - name: Wait for services
+      - name: Install Redis CLI
+        run: sudo apt-get update && sudo apt-get install -y redis-tools
+
+      - name: Wait for PostgreSQL
         run: |
           echo "Waiting for PostgreSQL..."
-          until pg_isready -h localhost -p 5432 -U test; do sleep 2; done
+          until pg_isready -h localhost -p 5432 -U test; do
+            sleep 2
+          done
 
-#          echo "Waiting for Redis..."
-#          until redis-cli -h localhost -p 6379 ping; do sleep 2; done
+      - name: Wait for Redis
+        run: |
+          echo "Waiting for Redis..."
+          until redis-cli -h localhost -p 6379 ping; do
+            sleep 2
+          done
 
       - name: Build & Run Tests
         run: ./mvnw -B clean verify
