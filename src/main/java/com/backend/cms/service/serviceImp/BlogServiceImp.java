@@ -34,7 +34,7 @@ public class BlogServiceImp implements BlogService {
     @Override
     public BlogResponseDto createBlog(BlogRequestDto request) {
         Blog blog = requestMapper.toEntity(request);
-        blog.setPost_date(LocalDateTime.now());
+        blog.setPostDate(LocalDateTime.now());
         Blog saved = blogRepo.save(blog);
 
         redisTemplate.delete(BLOG_LIST_KEY);

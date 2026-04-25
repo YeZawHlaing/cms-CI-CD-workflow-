@@ -17,12 +17,12 @@ public class Blog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private String title;
 
-    @Column
+    @Column(columnDefinition = "TEXT")
     private String text;
 
-    @Column
-    private LocalDateTime post_date;
+    @Column(name = "post_date")
+    private LocalDateTime postDate;
 }
